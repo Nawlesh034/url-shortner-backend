@@ -5,11 +5,15 @@ import { connectDb } from "./config/db.js";
 import { getUrl } from "./controllers/url_controller.js";
 
 const app = express()
-app.use(cors(
-  {
-    origin:"https://url-shortner-frontend-sable.vercel.app"
-  }
-));
+app.use(
+  cors({
+    origin: [
+      "https://url-shortner-frontend-sable.vercel.app",
+      "http://localhost:5173"
+    ],
+  })
+);
+
 app.use(express.json());
 
 // Health check endpoint
